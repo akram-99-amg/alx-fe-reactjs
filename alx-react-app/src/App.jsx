@@ -40,9 +40,9 @@ function App() {
       </p>
 
       <UserProfile
-        Name="Alice"
-        Age="25"
-        Bio="Loves hiking and photography"
+        name="Alice"
+        age="25"
+        bio="Loves hiking and photography"
       />
 
       <Header />
