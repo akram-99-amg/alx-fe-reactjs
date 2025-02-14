@@ -22,9 +22,9 @@ function App() {
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-        
+
       </div>
-      
+
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -39,7 +39,12 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+      <UserProfile
+        Name="Alice"
+        Age="25"
+        Bio="Loves hiking and photography"
+      />
+
       <Header />
       <MainContent />
       <Footer />
