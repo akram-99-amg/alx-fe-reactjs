@@ -8,7 +8,7 @@ import About from './About'
 
 const Navbar = () => {
     return (
-        <div style={{ backgroundColor: 'navy', color: 'white', textAlign: 'center' }}>
+        <div style={{ backgroundColor: 'navy', color: 'white', textAlign: 'center', display:"flex", justifyContent:"center" }}>
             <ul>
                 <li> <Link to="/home">Home</Link></li>
                 <li> <Link to="/about">Home</Link></li>
