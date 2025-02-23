@@ -1,3 +1,5 @@
+import UserContext from "./UserContext"
+import React, { useContext } from "react"
 export default function UserProfile(props){
 return(
 <div>
