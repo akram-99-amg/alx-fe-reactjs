@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 
 const AddRecipeForm = () => {
     const addRecipe =useRecipeStore(state=>state.addRecipe);
-    const[title,setTitel]=useState("");
+    const[title,setTitle]=useState("");
     const[description,setDescription]=useState("");
 
     const handleSubmit=(event)=>{
         event.preventDefault();
         addRecipe({id:Date.now(), title, description});
-        setTitel("");
+        setTitle("");
         setDescription("");
     }
 
@@ -18,7 +18,7 @@ const AddRecipeForm = () => {
       <input 
       type="text"
       value={title}
-      onChange={(e)=>setTitel(e.target.value)}
+      onChange={(e)=>setTitle(e.target.value)}
       placeholder="Title" />
 
       <textarea 
