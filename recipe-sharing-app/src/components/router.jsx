@@ -6,7 +6,7 @@ import App from '../App.jsx'
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-       <Route path="/" element= {<React.lazy(()=>import("../App")) />} />
+       <Route path="/" element= {<App />} />
        <Route path="/details/:recipeId" element={<RecipeDetails />}  />
         </>
     )
