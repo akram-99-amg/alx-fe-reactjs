@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 
 const AddRecipeForm = () => {
     const addRecipe =useRecipeStore(state=>state.addRecipe);
+    const deleteRecipe =useRecipeStore(state=>state.deleteRecipe)
     const[title,setTitle]=useState("");
     const[description,setDescription]=useState("");
 
@@ -28,6 +29,8 @@ const AddRecipeForm = () => {
        />
 
         <button type="submit">Add Recipe</button>
+
+        <button onClick={deleteRecipe}>Delete</button>
 
        
     </form>
