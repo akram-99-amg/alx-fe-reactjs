@@ -1,5 +1,7 @@
 import { useRecipeStore } from './recipeStore';
 import React, { useState } from 'react'
+import RecipeList from './RecipeList';
+
 
 const AddRecipeForm = () => {
   const addRecipe = useRecipeStore(state => state.addRecipe);
@@ -29,6 +31,7 @@ const AddRecipeForm = () => {
       />
 
       <button type="submit">Add Recipe</button>
+      <RecipeList />
       
     </form>
   );
