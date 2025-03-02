@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
+
 const RecipeList = () => {
   const filterRecipes = useRecipeStore(state => state.filterRecipes)
   const filteredRecipes = useRecipeStore(state => state.filteredRecipes)
@@ -18,6 +19,9 @@ const RecipeList = () => {
           <p>{recipe.description} </p>
           <Link to={`/details/${recipe.title}`}>View Details</Link>
           <DeleteRecipeButton recipeId={recipe.id} />
+
+          
+          
         </div>
       ))}
 
