@@ -10,7 +10,7 @@ export const useRecipeStore = create(persist(set => ({
 
   deleteRecipe: (id) => set(state => ({
     recipes: state.recipes.filter(newRecipe => newRecipe.id !== id)
-    
+
   })),
   updateRecipe: (id, updatedRecipe) =>
     set((state) => ({
@@ -23,13 +23,16 @@ export const useRecipeStore = create(persist(set => ({
   setSearchTerm: (term) => set({ searchTerm: term }),
 
   filteredRecipes: [],
-  
+
   filterRecipes: () => set(state => ({
     filteredRecipes: state.recipes.filter(recipe =>
       recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-  )} ))
+    )
+  }))
 
-})),{
+}))
+, {
   name: "recipe",
   storage: createJSONStorage(() => sessionStorage),
-})
+}
+)
