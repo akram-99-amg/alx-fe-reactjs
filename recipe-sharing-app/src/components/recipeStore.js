@@ -1,6 +1,7 @@
 import { create } from "zustand"
+import {createJSONStorage, persist} from "zustand/middleware"
 
-export const useRecipeStore = create(set => ({
+export const useRecipeStore = create(persist(set => ({
     recipes: [],
     addRecipe: (newRecipe) => set(state => ({
         recipes: [...state.recipes, newRecipe]
@@ -19,4 +20,7 @@ export const useRecipeStore = create(set => ({
     
 
 
-}))
+})),{
+  name:"recipe",
+  storage: createJSONStorage(()=>sessionStorage), 
+})

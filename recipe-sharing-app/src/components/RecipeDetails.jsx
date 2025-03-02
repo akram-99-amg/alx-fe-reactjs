@@ -6,10 +6,12 @@ import EditRecipeForm from './EditRecipeForm';
 const RecipeDetails = () => {
   const {recipeId} =useParams()
   const recipe = useRecipeStore(state =>
-    state.recipes.find(recipe => recipe.id === recipeId)
+    state.recipes.find(recipe => recipe.title === recipeId)
   );
 
-
+  if (!recipe) {
+    return <p>Nothing.</p>;
+  }
 
   return (
     <div>

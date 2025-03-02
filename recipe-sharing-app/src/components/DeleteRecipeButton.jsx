@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useRecipeStore } from './recipeStore'
+import AddRecipeForm from './AddRecipeForm'
 
 
 const DeleteRecipeButton = ({recipeId}) => {
@@ -7,7 +8,7 @@ const DeleteRecipeButton = ({recipeId}) => {
     const deleteBtn = useRecipeStore(state=>state.deleteRecipe)
     const handleSubmit=()=>{
         deleteBtn(recipeId)
-        navigate("/App")
+        navigate("/AddRecipeForm")
     }
   return (
     <button onClick={handleSubmit}>
