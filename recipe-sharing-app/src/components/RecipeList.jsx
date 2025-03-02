@@ -1,4 +1,5 @@
 import { useRecipeStore } from './recipeStore';
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import DeleteRecipeButton from './DeleteRecipeButton';
 
@@ -15,6 +16,7 @@ const RecipeList = () => {
         <div key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.description} </p>
+          <Link to={`/details/${recipe.title}`}>View Details</Link>
           <DeleteRecipeButton recipeId={recipe.id} />
         </div>
       ))}
