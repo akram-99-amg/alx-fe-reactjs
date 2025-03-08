@@ -1,19 +1,26 @@
-import React from 'react'
-import { useNavigate, Outlet } from 'react-router-dom'
+import React from 'react';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import ProfileDetails from './ProfileDetails';
+import ProfileSettings from './ProfileSettings';
 
-const Profile = () => {
-const navigate = useNavigate()
-const handleLogout=()=>{
-    localStorage.removeItem("isAutenticated");
-    navigate("/")
-}
+function Profile() {
   return (
     <div>
-      profile
-    <Outlet />
-    <button onClick={handleLogout}>logout</button>
+      <h1>Profile</h1>
+      <nav>
+        <Link to="details">Profile Details</Link> |{' '}
+        <Link to="settings">Profile Settings</Link>
+      </nav>
+
+      {/* This Outlet is where the nested routes will be rendered */}
+      <Outlet />
+
+      <Routes>
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
