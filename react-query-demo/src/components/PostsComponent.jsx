@@ -4,18 +4,24 @@ import { useQuery } from '@tanstack/react-query';
 
 const PostsComponent = () => {
 
-    const { isLoading, data:fetchPosts, isError, error } = useQuery({
+    const { isLoading, data:fetchPosts, isError, error, refetch } = useQuery({
         queryKey: ["repoData"],
         queryFn: () =>
             fetch("https://jsonplaceholder.typicode.com/posts")
-                .then(res => { return res.json()})
+                .then(res => { return res.json()}),
+        staleTime:6000,
+        cachTime: 6000,
+        refetchOnWindowFocus: false,
+        keepPreviousData: true,
 
     })
     if (isLoading) return "Loading..."
     if (isError) return "an error has occurred : " + error.message
     return (
         <div>
+
             <h1>Posts</h1>
+            <button onClick={refetch}>refresh</button>
             <div>
                 <ul>
                     {fetchPosts.map((fetchPost) => (
@@ -27,7 +33,7 @@ const PostsComponent = () => {
                 </ul>
 
             </div>
-
+                    
         </div>
     )
 }
