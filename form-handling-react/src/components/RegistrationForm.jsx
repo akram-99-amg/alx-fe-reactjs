@@ -5,17 +5,22 @@ const RegistrationForm = () => {
   const [username,setUsername]= useState("")
   const [email,setEmail]= useState("")
   const [password,setPassword]= useState("")
-  const [error,setError]= useState("")
+  const [errors,setErrors]= useState("")
 
   const handleSubmit =(e)=>{
         e.preventDefault()
         
         console.log("submit", {username,email,password})
-        if(!email){setError("Email is required")}
+        if(!username){
+            setErrors("username is required")
+        }
+        if(!email){
+            setErrors("Email is required")
+        }
         if(!password){
-            setError("try again")
+            setErrors("try again")
             }
-        setError("")
+        setErrors("")
         setUsername("")
         setEmail("")
         setPassword("")
@@ -38,7 +43,7 @@ const RegistrationForm = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" name='password' required value={password} onChange={(e)=>setPassword(e.target.value)} />
                 
-                {error && <div style={{color:"red"}}>{error}</div>}
+                {errors && <div style={{color:"red"}}>{errors}</div>}
 
                 <button type='submit'>sign in</button>
             </form>
