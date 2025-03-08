@@ -9,8 +9,8 @@ const PostsComponent = () => {
         queryFn: () =>
             fetch("https://jsonplaceholder.typicode.com/posts")
                 .then(res => { return res.json()}),
-        staleTime:6000,
-        cachTime: 6000,
+        staleTime:500,
+        cacheTime: 400,
         refetchOnWindowFocus: false,
         keepPreviousData: true,
 
