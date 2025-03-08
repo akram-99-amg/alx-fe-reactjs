@@ -9,10 +9,12 @@ const RegistrationForm = () => {
 
   const handleSubmit =(e)=>{
         e.preventDefault()
+        
         console.log("submit", {username,email,password})
-        if (!username.trim() && !email.trim() && !password.trim()) {
-            return setError("Try again")
-        }
+        if(!email){setError("Email is required")}
+        if(!password){
+            setError("try again")
+            }
         setError("")
         setUsername("")
         setEmail("")
@@ -26,15 +28,15 @@ const RegistrationForm = () => {
 
             <form onSubmit={handleSubmit} >
                 <label htmlFor="username">Username</label>
-                <input type="text" name='username' value={username} onChange={(e)=>setUsername(e.target.value)} />
+                <input type="text" name='username' required value={username} onChange={(e)=>setUsername(e.target.value)} />
                 
 
                 <label htmlFor="email">email</label>
-                <input type="email" name='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <input type="email" name='email' required value={email} onChange={(e)=>setEmail(e.target.value)} />
                 
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
+                <input type="password" name='password' required value={password} onChange={(e)=>setPassword(e.target.value)} />
                 
                 {error && <div style={{color:"red"}}>{error}</div>}
 
