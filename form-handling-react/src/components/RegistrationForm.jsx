@@ -1,55 +1,47 @@
 import React, { useState } from 'react'
-import * as Yup from "yup"
-import { useFormik } from "formik"
+
 
 const RegistrationForm = () => {
-    const formik = useFormik({
-        initialValues: {
-            username: "",
-            email: "",
-            password: ""
-        },
-        validationSchema: Yup.object({
-            username: Yup.string().required("username required"),
-            email: Yup.string().email("invalid Email Format").required("Email required"),
-            password: Yup.string().required("Password required").min(6)
+  const [username,setUsername]= useState("")
+  const [email,setEmail]= useState("")
+  const [password,setPassword]= useState("")
+  const [error,setError]= useState("")
 
-
-        }),
-        onSubmit: (values, { setErrors }) => {
-            if (values.username && values.email && values.password) {
-                alert("You signed in")
-            } else {
-                setErrors("Verify your authentication inputs ")
-            }
-
+  const handleSubmit =(e)=>{
+        e.preventDefault()
+        console.log("submit", {username,email,password})
+        if (!username.trim() && !email.trim() && !password.trim()) {
+            return setError("Try again")
         }
+        setError("")
+        setUsername("")
+        setEmail("")
+        setPassword("")
+        
 
-    })
-
-
+  }
 
     return (
-        <>
+        
 
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={handleSubmit} >
                 <label htmlFor="username">Username</label>
-                <input type="text" name='username' onChange={formik.handleChange} />
-                {formik.touched.username && formik.errors.username && (<p>Enter a username</p>)}
+                <input type="text" name='username' value={username} onChange={(e)=>setUsername(e.target.value)} />
+                
 
                 <label htmlFor="email">email</label>
-                <input type="email" name='email' onChange={formik.handleChange} />
-                {formik.touched.email && formik.errors.email && (<p>Enter a valid email</p>)}
+                <input type="email" name='email' value={email} onChange={(e)=>setEmail(e.target.value)} />
+                
 
                 <label htmlFor="password">Password</label>
-                <input type="password" name='password' onChange={formik.handleChange} />
-                {formik.touched.password && formik.errors.password && (<p>Enter a password</p>)}
-
+                <input type="password" name='password' value={password} onChange={(e)=>setPassword(e.target.value)} />
+                
+                {error && <div style={{color:"red"}}>{error}</div>}
 
                 <button type='submit'>sign in</button>
             </form>
 
-        </>
+        
     )
 }
 
