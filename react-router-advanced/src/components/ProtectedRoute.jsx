@@ -1,10 +1,11 @@
-import { Navigate } from "react-router-dom"
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import useAuth from './useAuth'; 
 
-const ProtectedRoute = ({children}) => {
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useAuth(); 
 
-    const isAutenticated =localStorage.getItem("isAutenticated")
+  return isAuthenticated ? children : <Navigate to="/profile" />;
+};
 
-  return isAutenticated ? children : <Navigate to="/profile" />
-}
-
-export default ProtectedRoute
+export default ProtectedRoute;
