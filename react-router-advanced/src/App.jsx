@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Autenticated/>} />
         <Route path="/profile/*" element={<Profile />} />
         <Route path="/user/:userId" element={<UserProfile />} />
-        <Route path="/post/:postId" element={<BlogPost />} />
+        <Route path="/blog/:id" element={<BlogPost />} /> 
       </Routes>
     </Router>
   );
