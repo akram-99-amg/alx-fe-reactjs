@@ -11,13 +11,13 @@ const RegistrationForm = () => {
         e.preventDefault()
         
         console.log("submit", {username,email,password})
-        if(!username){
+        if (!username){
             setErrors("username is required")
         }
-        if(!email){
+        if (!email){
             setErrors("Email is required")
         }
-        if(!password){
+        if (!password){
             setErrors("try again")
             }
         setErrors("")
