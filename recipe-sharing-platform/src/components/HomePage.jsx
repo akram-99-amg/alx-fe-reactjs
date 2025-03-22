@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import data from "../data.json"
 import { Link } from 'react-router-dom'
+import AddRecipeForm from './AddRecipeForm'
 const HomePage = () => {
     const [recipes, setRecepies] = useState([])
     useEffect(() => {
@@ -15,6 +16,7 @@ const HomePage = () => {
     return (
         <div className='p-5'>
             <h1 className='text-2xl font-bold flex justify-center m-6'> Recipe List</h1>
+            <AddRecipeForm />
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {recipes.map((recipe) => (
                     <div key={recipe.id} className='border rounded-lg p-2 shadow-sm hover:shadow-2xl'> 
