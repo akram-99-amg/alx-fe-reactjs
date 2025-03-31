@@ -10,7 +10,7 @@ export const fetchUserData = async (query, location, minRepos) => {
       
   
       const res = await axios.get(url);
-      console.log("API Response:", res.data);
+      
   
       return res.data.items || [];
     } catch (error) {
