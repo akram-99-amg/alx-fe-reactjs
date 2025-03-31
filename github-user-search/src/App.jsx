@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import './App.css'
-import SearchGitHub from "./components/SearchGitHub"
+import Search from "./components/Search"
 
 function App() {
  
@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<SearchGitHub />}/>
+      <Route path="/" element={<Search />}/>
 
     </Routes>
       
