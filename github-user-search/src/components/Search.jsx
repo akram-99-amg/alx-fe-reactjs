@@ -5,7 +5,7 @@ import { fetchUserData } from '../services/githubService'
 const Search = () => {
   const [query,setQuery]=useState("");
   const [location,setLocation]=useState("");
-  const [miniRepos,setMiniRepos]=useState("");
+  const [minRepos,setMinRepos]=useState("");
   const [users,setUsers]=useState([]);
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState(null);
@@ -17,7 +17,7 @@ const Search = () => {
     setUsers([])
 
     try{
-      const userData =await fetchUserData(query,location,miniRepos)
+      const userData =await fetchUserData(query,location,minRepos)
       setUsers(userData)
     }catch(err){
       setError(err.message)
@@ -46,8 +46,8 @@ const Search = () => {
         />
         <input
           type="text"
-          value={miniRepos}
-          onChange={(e) => setMiniRepos(e.target.value)}
+          value={minRepos}
+          onChange={(e) => setMinRepos(e.target.value)}
           placeholder="Min Repositries (optional)"
           className="border p-2 rounded-md shadow-sm"
         />

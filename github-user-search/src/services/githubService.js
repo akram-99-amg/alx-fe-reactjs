@@ -1,10 +1,10 @@
 import axios from "axios"
 
-export const fetchUserData = async (query, location, miniRepos) => {
+export const fetchUserData = async (query, location, minRepos) => {
     try {
       let searchQuery = `q=${query}`;
       if (location) searchQuery += `+location:${location}`;
-      if (miniRepos && !isNaN(miniRepos)) searchQuery += `+repos:>${miniRepos}`;
+      if (minRepos && !isNaN(minRepos)) searchQuery += `+repos:>${minRepos}`;
   
       const url = `https://api.github.com/search/users?${searchQuery}`;
       
