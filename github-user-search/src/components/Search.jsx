@@ -1,21 +1,24 @@
 import {useState}from 'react'
-import { fetchUserDatat } from '../services/githubService'
+import {Link} from "react-router-dom"
+import { fetchUserData } from '../services/githubService'
 
 const Search = () => {
   const [query,setQuery]=useState("");
-  const [user,setUser]=useState(null);
-  const [loading,setLoading]=useState(null);
+  const [location,setLocation]=useState("");
+  const [miniRepos,setMiniRepos]=useState("");
+  const [users,setUsers]=useState([]);
+  const [loading,setLoading]=useState(false);
   const [error,setError]=useState(null);
 
   const handleSubmit =async (e)=>{
     e.preventDefault()
     setLoading(true)
     setError(null)
-    setUser(null)
+    setUsers([])
 
     try{
-      const userData =await fetchUserDatat(query)
-      setUser(userData)
+      const userData =await fetchUserData(query,location,miniRepos)
+      setUsers(userData)
     }catch(err){
       setError(err.message)
     }
@@ -34,6 +37,22 @@ const Search = () => {
           placeholder="Search GitHub User"
           className="border p-2 rounded-md shadow-sm"
         />
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Location (optional)"
+          className="border p-2 rounded-md shadow-sm"
+        />
+        <input
+          type="text"
+          value={miniRepos}
+          onChange={(e) => setMiniRepos(e.target.value)}
+          placeholder="Min Repositries (optional)"
+          className="border p-2 rounded-md shadow-sm"
+        />
+
+
         <button type="submit" className="ml-2 bg-blue-500 text-white p-2 rounded-md">
           Search
         </button>
@@ -41,15 +60,20 @@ const Search = () => {
 
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">Looks like we cant find the user</p>}
-      {user && (
-        <div className="border p-4 rounded-md shadow-md flex flex-col items-center">
-          <img src={user.avatar_url} alt={user.login} className="w-20 h-20 rounded-full" />
-          <h2 className="mt-2 text-lg font-semibold">{user.name || user.login}</h2>
-          <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
-            View Profile
-          </a>
-        </div>
-      )}
+
+      <div className="w-full mt-4">
+        {users.map((user) => (
+          <div key={user.id} className="border p-4 rounded-md shadow-md flex items-center mb-2">
+            <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full mr-4" />
+            <div>
+              <h2 className="text-lg font-semibold">{user.login}</h2>
+              <Link to={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+                View Profile
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
